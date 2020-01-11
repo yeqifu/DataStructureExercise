@@ -72,7 +72,6 @@ class SingleLinkedList{
             temp = temp.getNext();
         }
     }
-
 }
 
 /**
