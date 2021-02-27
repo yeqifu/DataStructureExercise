@@ -1,4 +1,4 @@
-package com.yeqifu.Array;
+package com.yeqifu.array;
 
 /**
  * 稀疏数组
@@ -9,7 +9,7 @@ public class SparseArray {
     public static void main(String[] args) {
         //创建一个原始的二维数组 11*11
         //0:表示没有棋子，1表示黑子，2表示蓝子
-        int chessArr1[][] = new int[11][11];
+        int[][] chessArr1 = new int[11][11];
         chessArr1[1][2] = 1;
         chessArr1[2][3] = 2;
         chessArr1[4][5] = 2;
@@ -36,7 +36,8 @@ public class SparseArray {
 
         //2.创建对应的稀疏数组
         int[][] sparseArray = new int[sum+1][3];
-        //给稀疏数组赋值
+        //3.给稀疏数组赋值
+        //第一行代表原数组有几行，几列，多少个棋子
         sparseArray[0][0] = chessArr1.length;
         sparseArray[0][1] = chessArr1.length;
         sparseArray[0][2] = sum;
@@ -83,8 +84,6 @@ public class SparseArray {
             }
             System.out.println();
         }
-
-
 
     }
 }

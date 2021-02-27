@@ -1,4 +1,4 @@
-package com.yeqifu.Queue;
+package com.yeqifu.queue;
 
 import java.util.Scanner;
 
@@ -176,7 +176,5 @@ class CircleArray{
         }
         return arr[front];
     }
-
-
 
 }
