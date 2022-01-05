@@ -1,5 +1,7 @@
 package com.yeqifu.linkedlist;
 
+import java.util.Stack;
+
 /**
  * 使用单向链表存储梁山一百单八将
  *
@@ -15,11 +17,12 @@ public class SingleLinkedListDemo {
         singleLinkedList.add(heroNode1);
         singleLinkedList.add(heroNode2);
         singleLinkedList.add(heroNode3);
-        singleLinkedList.addByOrder(new HeroNode(6, "李逵", "黑旋风"));
+/*        singleLinkedList.addByOrder(new HeroNode(6, "李逵", "黑旋风"));
         singleLinkedList.addByOrder(new HeroNode(5, "抹布", "KTM RC390"));
         singleLinkedList.addByOrder(new HeroNode(4, "哈姐", "Kawasaki Z400"));
-        singleLinkedList.addByOrder(new HeroNode(8, "木南", "Ninja 400"));
-        singleLinkedList.list();
+        singleLinkedList.addByOrder(new HeroNode(8, "木南", "Ninja 400"));*/
+//        singleLinkedList.list();
+//        System.out.println("=================================");
 /*        singleLinkedList.updateNode(new HeroNode(5, "抹布牛逼！", "KTM RC390"));
         singleLinkedList.list();
         singleLinkedList.deleteNode(new HeroNode(1, "宋江", "及时雨"));
@@ -29,8 +32,62 @@ public class SingleLinkedListDemo {
 
         System.out.println(SingleLinkedListDemo.searchLastKNode(singleLinkedList.getHead(), 0));*/
 
-        SingleLinkedList singleLinkedListReversalSingle = reversalSingleLinkedList(singleLinkedList);
-        singleLinkedListReversalSingle.list();
+        /*SingleLinkedList singleLinkedListReversalSingle = reversalSingleLinkedList(singleLinkedList);
+        singleLinkedListReversalSingle.list();*/
+
+        /*// 使用栈逆序打印单链表
+        reversalPrintLinkedList(singleLinkedList);*/
+
+        SingleLinkedList singleLinkedListTwo = new SingleLinkedList();
+        singleLinkedListTwo.add(new HeroNode(10,"小红队长","杜卡迪"));
+        singleLinkedListTwo.add(new HeroNode(7,"袁子","Ninja 400"));
+        mergeSingleLinkedList(singleLinkedList,singleLinkedListTwo);
+    }
+
+    /**
+     * 合并两个有序的单链表，合并之后的链表依然有序
+     * @param singleLinkedListOne
+     * @param singleLinkedListTwo
+     */
+    public static void mergeSingleLinkedList(SingleLinkedList singleLinkedListOne,SingleLinkedList singleLinkedListTwo){
+/*        singleLinkedListOne.list();
+        System.out.println("==================");
+        singleLinkedListTwo.list();*/
+        SingleLinkedList resultSingleLinkedList = new SingleLinkedList();
+        HeroNode oneHeroNode = singleLinkedListOne.getHead().getNext();
+        HeroNode twoHeroNode = singleLinkedListTwo.getHead().getNext();
+        resultSingleLinkedList.add(oneHeroNode);
+
+        resultSingleLinkedList.list();
+        System.out.println("======================================");
+        for (int i = 0; i < 2; i++) {
+            resultSingleLinkedList.addByOrder(twoHeroNode);
+            if (i!=2) {
+                twoHeroNode = twoHeroNode.getNext();
+            }
+        }
+        resultSingleLinkedList.list();
+    }
+
+    /**
+     * 使用栈逆序打印单链表
+     * @param singleLinkedList
+     */
+    public static void reversalPrintLinkedList(SingleLinkedList singleLinkedList){
+        Stack stack = new Stack();
+        HeroNode temp = null;
+        for (int i = 0; i < getLinkedListLength(singleLinkedList.getHead()); i++) {
+            if (i==0){
+                temp = singleLinkedList.getHead();
+            }
+            temp = temp.getNext();
+            // 入栈
+            stack.push(temp);
+        }
+        while (!stack.isEmpty()){
+            // 出栈
+            System.out.println(stack.pop());
+        }
     }
 
     /**
